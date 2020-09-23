@@ -4,7 +4,7 @@ import (
 	"encoding/json"
 )
 
-const BaseUrl = `https://api.chatwork.com/v1`
+const BaseUrl = `https://api.chatwork.com/v2`
 
 type Me struct {
 	AccountId        int    `json:"account_id"`
@@ -30,7 +30,7 @@ type Me struct {
 func (c *Client) Me() Me {
 	ret := c.Get("/me", map[string]string{})
 	var me Me
-	json.Unmarshal(ret, &me)
+	_ = json.Unmarshal(ret, &me)
 	return me
 }
 
@@ -46,7 +46,7 @@ type Status struct {
 func (c *Client) MyStatus() Status {
 	ret := c.Get("/my/status", map[string]string{})
 	var status Status
-	json.Unmarshal(ret, &status)
+	_ = json.Unmarshal(ret, &status)
 	return status
 }
 
@@ -65,7 +65,7 @@ type MyTask struct {
 func (c *Client) MyTasks(params map[string]string) []MyTask {
 	ret := c.Get("/my/tasks", params)
 	var tasks []MyTask
-	json.Unmarshal(ret, &tasks)
+	_ = json.Unmarshal(ret, &tasks)
 	return tasks
 }
 
@@ -83,7 +83,7 @@ type Contact struct {
 func (c *Client) Contacts() []Contact {
 	ret := c.Get("/contacts", map[string]string{})
 	var contacts []Contact
-	json.Unmarshal(ret, &contacts)
+	_ = json.Unmarshal(ret, &contacts)
 	return contacts
 }
 
@@ -106,14 +106,14 @@ type Room struct {
 func (c *Client) Rooms() []Room {
 	ret := c.Get("/rooms", map[string]string{})
 	var rooms []Room
-	json.Unmarshal(ret, &rooms)
+	_ = json.Unmarshal(ret, &rooms)
 	return rooms
 }
 
 func (c *Client) Room(roomId string) Room {
 	ret := c.Get("/rooms/"+roomId, map[string]string{})
 	var room Room
-	json.Unmarshal(ret, &room)
+	_ = json.Unmarshal(ret, &room)
 	return room
 }
 
@@ -156,7 +156,7 @@ type Member struct {
 func (c *Client) RoomMembers(roomId string) []Member {
 	ret := c.Get("/rooms/"+roomId+"/members", map[string]string{})
 	var members []Member
-	json.Unmarshal(ret, &members)
+	_ = json.Unmarshal(ret, &members)
 	return members
 }
 
@@ -185,7 +185,7 @@ type Message struct {
 func (c *Client) RoomMessages(roomId string) []Message {
 	ret := c.Get("/rooms/"+roomId+"/messages", map[string]string{})
 	var messages []Message
-	json.Unmarshal(ret, &messages)
+	_ = json.Unmarshal(ret, &messages)
 	return messages
 }
 
@@ -196,7 +196,7 @@ func (c *Client) PostRoomMessage(roomId string, body string) []byte {
 func (c *Client) RoomMessage(roomId, messageId string) Message {
 	ret := c.Get("/rooms/"+roomId+"/messages/"+messageId, map[string]string{})
 	var message Message
-	json.Unmarshal(ret, &message)
+	_ = json.Unmarshal(ret, &message)
 	return message
 }
 
@@ -213,7 +213,7 @@ type Task struct {
 func (c *Client) RoomTasks(roomId string) []Task {
 	ret := c.Get("/rooms/"+roomId+"/tasks", map[string]string{})
 	var tasks []Task
-	json.Unmarshal(ret, &tasks)
+	_ = json.Unmarshal(ret, &tasks)
 	return tasks
 }
 
@@ -228,7 +228,7 @@ func (c *Client) PostRoomTask(roomId string, params map[string]string) []byte {
 func (c *Client) RoomTask(roomId, taskId string) Task {
 	ret := c.Get("/rooms/"+roomId+"/tasks/"+taskId, map[string]string{})
 	var task Task
-	json.Unmarshal(ret, &task)
+	_ = json.Unmarshal(ret, &task)
 	return task
 }
 
@@ -246,13 +246,13 @@ type File struct {
 func (c *Client) RoomFiles(roomId string, params map[string]string) []File {
 	ret := c.Get("/rooms/"+roomId+"/files", params)
 	var files []File
-	json.Unmarshal(ret, &files)
+	_ = json.Unmarshal(ret, &files)
 	return files
 }
 
 func (c *Client) RoomFile(roomId, fileId string) File {
 	ret := c.Get("/rooms/"+roomId+"/files/"+fileId, map[string]string{})
 	var file File
-	json.Unmarshal(ret, &file)
+	_ = json.Unmarshal(ret, &file)
 	return file
 }
