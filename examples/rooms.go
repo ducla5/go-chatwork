@@ -3,10 +3,10 @@ package main
 import (
 	"flag"
 	"fmt"
-	chatwork "github.com/ducla5/go-chatwork"
+	chatwork "go-chatwork"
 )
 
-var apiKey string
+//var apiKey string
 
 func init() {
 	flag.StringVar(&apiKey, "key", "", "Chatwork API key")
