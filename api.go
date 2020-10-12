@@ -175,7 +175,7 @@ type Account struct {
 }
 
 type Message struct {
-	MessageId  int     `json:"message_id"`
+	MessageId  string  `json:"message_id"`
 	Account    Account `json:"account"`
 	Body       string  `json:"body"`
 	SendTime   int64   `json:"send_time"`
@@ -204,7 +204,7 @@ type Task struct {
 	TaskId            int     `json:"task_id"`
 	Account           Account `json:"account"`
 	AssignedByAccount Account `json:"assigned_by_account"`
-	MessageId         int     `json:"message_id"`
+	MessageId         string  `json:"message_id"`
 	Body              string  `json:"body"`
 	LimitTime         int64   `json:"limit_time"`
 	Status            string  `json:"status"`
@@ -235,7 +235,7 @@ func (c *Client) RoomTask(roomId, taskId string) Task {
 type File struct {
 	FileId     int     `json:"file_id"`
 	Account    Account `json:"account"`
-	MessageId  int     `json:"message_id"`
+	MessageId  string  `json:"message_id"`
 	Filename   string  `json:"filename"`
 	Filesize   int     `json:"filesize"`
 	UploadTime int64   `json:"upload_time"`
